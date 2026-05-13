@@ -76,6 +76,9 @@ public class AutoWither implements ClientModInitializer {
 
 		DodgeHelper.init();
 		ParryHelper.init();
+		ReconnectHelper.init();
+		ContainerHelper.init();
+		CrescentTowerHelper.init();
 
 		ClientCommandRegistrationCallback.EVENT.register((dispatcher, registryAccess) ->
 				dispatcher.register(ClientCommandManager.literal("roboo")

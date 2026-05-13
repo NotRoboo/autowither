@@ -21,6 +21,8 @@ public class ConfigManager {
         boolean demonMagicEnabled = true;
         boolean autoSummonEnabled = true;
         boolean autoDodgeEnabled = true;
+        boolean autoReconnectEnabled = true;
+        boolean warpToVolcano = true;
     }
 
     public static void load() {
@@ -39,6 +41,8 @@ public class ConfigManager {
             ModConfig.setDemonMagicEnabled(data.demonMagicEnabled);
             ModConfig.setAutoSummonEnabled(data.autoSummonEnabled);
             ModConfig.setAutoDodgeEnabled(data.autoDodgeEnabled);
+            ModConfig.setAutoReconnectEnabled(data.autoReconnectEnabled);
+            ModConfig.setWarpToVolcano(data.warpToVolcano);
         } catch (IOException e) {
             System.err.println("[AutoWither] Failed to load config: " + e.getMessage());
         }
@@ -51,6 +55,8 @@ public class ConfigManager {
         data.demonMagicEnabled = ModConfig.isDemonMagicEnabled();
         data.autoSummonEnabled = ModConfig.isAutoSummonEnabled();
         data.autoDodgeEnabled = ModConfig.isAutoDodgeEnabled();
+        data.autoReconnectEnabled = ModConfig.isAutoReconnectEnabled();
+        data.warpToVolcano = ModConfig.isWarpToVolcano();
 
         try (Writer writer = new FileWriter(CONFIG_PATH.toFile())) {
             GSON.toJson(data, writer);

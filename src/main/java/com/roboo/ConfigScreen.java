@@ -51,6 +51,20 @@ public class ConfigScreen {
                 .setSaveConsumer(ModConfig::setAutoSummonEnabled)
                 .build());
 
+        combat.addEntry(entry
+                .startBooleanToggle(Component.literal("Auto Reconnect"), ModConfig.isAutoReconnectEnabled())
+                .setDefaultValue(true)
+                .setTooltip(Component.literal("Automatically run lobby/visit commands on disconnect messages"))
+                .setSaveConsumer(ModConfig::setAutoReconnectEnabled)
+                .build());
+
+        combat.addEntry(entry
+                .startBooleanToggle(Component.literal("Warp: Ancient Volcano"), ModConfig.isWarpToVolcano())
+                .setDefaultValue(true)
+                .setTooltip(Component.literal("ON = Ancient Volcano, OFF = Crescent Tower"))
+                .setSaveConsumer(ModConfig::setWarpToVolcano)
+                .build());
+
         builder.setSavingRunnable(ConfigManager::save);
 
         return builder.build();
