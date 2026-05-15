@@ -12,6 +12,7 @@ import net.minecraft.client.KeyMapping;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
 
+import net.minecraft.resources.Identifier;
 import org.lwjgl.glfw.GLFW;
 
 public class AutoWither implements ClientModInitializer {
@@ -67,11 +68,15 @@ public class AutoWither implements ClientModInitializer {
 	public void onInitializeClient() {
 		ConfigManager.load();
 
+		KeyMapping.Category category = KeyMapping.Category.register(
+				Identifier.fromNamespaceAndPath("autowither", "main")
+		);
+
 		toggleKey = KeyBindingHelper.registerKeyBinding(new KeyMapping(
 				"AutoWither",
 				InputConstants.Type.KEYSYM,
 				GLFW.GLFW_KEY_RIGHT_CONTROL,
-				KeyMapping.Category.MISC
+				category
 		));
 
 		DodgeHelper.init();
@@ -110,7 +115,7 @@ public class AutoWither implements ClientModInitializer {
 
 		// Rotation
 		if (rotateToBoss) {
-			if (System.currentTimeMillis() - entryTime < 500) {
+			if (System.currentTimeMillis() - entryTime < 1500) {
 				if (RotationHelper.lookAt(90f, 0f)) {
 					rotateToBoss = false;
 					moveForward = true;
