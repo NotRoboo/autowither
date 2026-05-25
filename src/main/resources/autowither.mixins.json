@@ -3,7 +3,12 @@
 	"package": "com.roboo.mixin",
 	"compatibilityLevel": "JAVA_21",
 	"client": [
-		"ExampleMixin"
+		"ExampleMixin",
+		"ClientPlayerEntityMixin",
+		"KeyboardInputMixin",
+		"KeyboardMixin",
+		"MouseMixin",
+		"PlayerMovementMixin"
 	],
 	"mixins": [],
 	"injectors": {
